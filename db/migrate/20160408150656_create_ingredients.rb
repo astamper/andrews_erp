@@ -4,8 +4,7 @@ class CreateIngredients < ActiveRecord::Migration
       t.decimal :quantity
       t.string :unit
       t.references :stock_type, index: true
-      t.references :stock_type, index: true
-
+      t.references :stock_type_component_id, references: :stock_type, index: true
       t.timestamps
     end
   end
