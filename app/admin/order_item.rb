@@ -1,4 +1,5 @@
 ActiveAdmin.register OrderItem do
+  permit_params :quantity, :packaging, :unit
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
