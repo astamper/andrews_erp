@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :stock_types
+
   resources :ingredient_instances
 
   devise_for :admin_users, ActiveAdmin::Devise.config
