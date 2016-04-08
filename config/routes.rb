@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :stocks
+
   resources :ingredients
 
   resources :stock_types

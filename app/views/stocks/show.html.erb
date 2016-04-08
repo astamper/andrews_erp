@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Initial quantity:</strong>
+  <%= @stock.initial_quantity %>
+</p>
+
+<p>
+  <strong>Purchase date:</strong>
+  <%= @stock.purchase_date %>
+</p>
+
+<p>
+  <strong>Expiration date:</strong>
+  <%= @stock.expiration_date %>
+</p>
+
+<p>
+  <strong>Purchase price:</strong>
+  <%= @stock.purchase_price %>
+</p>
+
+<p>
+  <strong>Batch number:</strong>
+  <%= @stock.batch_number %>
+</p>
+
+<p>
+  <strong>Supplier:</strong>
+  <%= @stock.supplier %>
+</p>
+
+<p>
+  <strong>Stock type:</strong>
+  <%= @stock.stock_type %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @stock.unit %>
+</p>
+
+<%= link_to 'Edit', edit_stock_path(@stock) %> |
+<%= link_to 'Back', stocks_path %>
