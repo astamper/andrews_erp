@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'landings/index'
+
   resources :suppliers
 
   resources :shipping_addresses
