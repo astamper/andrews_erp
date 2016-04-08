@@ -1,0 +1,14 @@
+<%= simple_form_for(@ingredient) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :quantity %>
+    <%= f.input :unit %>
+    <%= f.association :stock_type %>
+    <%= f.association :stock_type %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
