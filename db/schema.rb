@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408150639) do
+ActiveRecord::Schema.define(version: 20160408150714) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -45,6 +45,118 @@ ActiveRecord::Schema.define(version: 20160408150639) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+
+  create_table "customers", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company"
+    t.string   "customer_type"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ingredient_instances", force: true do |t|
+    t.decimal  "quantity"
+    t.string   "unit"
+    t.integer  "stock_id"
+    t.integer  "stock_component_id_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ingredient_instances", ["stock_component_id_id"], name: "index_ingredient_instances_on_stock_component_id_id"
+  add_index "ingredient_instances", ["stock_id"], name: "index_ingredient_instances_on_stock_id"
+
+  create_table "ingredients", force: true do |t|
+    t.decimal  "quantity"
+    t.string   "unit"
+    t.integer  "stock_type_id"
+    t.integer  "stock_type_component_id_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ingredients", ["stock_type_component_id_id"], name: "index_ingredients_on_stock_type_component_id_id"
+  add_index "ingredients", ["stock_type_id"], name: "index_ingredients_on_stock_type_id"
+
+  create_table "order_items", force: true do |t|
+    t.integer  "quantity"
+    t.string   "packaging"
+    t.integer  "order_id"
+    t.integer  "stock_type_id"
+    t.string   "unit"
+    t.integer  "stock_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
+  add_index "order_items", ["stock_id"], name: "index_order_items_on_stock_id"
+  add_index "order_items", ["stock_type_id"], name: "index_order_items_on_stock_type_id"
+
+  create_table "orders", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "fob_date"
+    t.string   "fob_time"
+    t.boolean  "paid"
+    t.string   "shipping_type"
+    t.integer  "customer_id"
+    t.integer  "shipping_address_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
+  add_index "orders", ["shipping_address_id"], name: "index_orders_on_shipping_address_id"
+
+  create_table "shipping_addresses", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zip"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shipping_addresses", ["customer_id"], name: "index_shipping_addresses_on_customer_id"
+
+  create_table "stock_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stocks", force: true do |t|
+    t.float    "initial_quantity"
+    t.date     "purchase_date"
+    t.date     "expiration_date"
+    t.float    "purchase_price"
+    t.string   "batch_number"
+    t.integer  "supplier_id"
+    t.integer  "stock_type_id"
+    t.string   "unit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stocks", ["stock_type_id"], name: "index_stocks_on_stock_type_id"
+  add_index "stocks", ["supplier_id"], name: "index_stocks_on_supplier_id"
+
+  create_table "suppliers", force: true do |t|
+    t.string   "company_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
