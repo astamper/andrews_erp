@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @ingredient_instance.quantity %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @ingredient_instance.unit %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @ingredient_instance.stock %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @ingredient_instance.stock %>
+</p>
+
+<%= link_to 'Edit', edit_ingredient_instance_path(@ingredient_instance) %> |
+<%= link_to 'Back', ingredient_instances_path %>

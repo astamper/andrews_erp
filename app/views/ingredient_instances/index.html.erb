@@ -1,0 +1,31 @@
+<h1>Listing ingredient_instances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Unit</th>
+      <th>Stock</th>
+      <th>Stock</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ingredient_instances.each do |ingredient_instance| %>
+      <tr>
+        <td><%= ingredient_instance.quantity %></td>
+        <td><%= ingredient_instance.unit %></td>
+        <td><%= ingredient_instance.stock %></td>
+        <td><%= ingredient_instance.stock %></td>
+        <td><%= link_to 'Show', ingredient_instance %></td>
+        <td><%= link_to 'Edit', edit_ingredient_instance_path(ingredient_instance) %></td>
+        <td><%= link_to 'Destroy', ingredient_instance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ingredient instance', new_ingredient_instance_path %>
