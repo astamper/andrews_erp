@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @order_item.quantity %>
+</p>
+
+<p>
+  <strong>Packaging:</strong>
+  <%= @order_item.packaging %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @order_item.order %>
+</p>
+
+<p>
+  <strong>Stock type:</strong>
+  <%= @order_item.stock_type %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @order_item.unit %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @order_item.stock %>
+</p>
+
+<%= link_to 'Edit', edit_order_item_path(@order_item) %> |
+<%= link_to 'Back', order_items_path %>
