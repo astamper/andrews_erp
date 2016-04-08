@@ -1,0 +1,18 @@
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :fob_date %>
+    <%= f.input :fob_time %>
+    <%= f.input :paid %>
+    <%= f.input :shipping_type %>
+    <%= f.association :customer %>
+    <%= f.association :shipping_address %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

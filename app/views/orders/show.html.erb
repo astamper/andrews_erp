@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @order.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @order.last_name %>
+</p>
+
+<p>
+  <strong>Fob date:</strong>
+  <%= @order.fob_date %>
+</p>
+
+<p>
+  <strong>Fob time:</strong>
+  <%= @order.fob_time %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @order.paid %>
+</p>
+
+<p>
+  <strong>Shipping type:</strong>
+  <%= @order.shipping_type %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @order.customer %>
+</p>
+
+<p>
+  <strong>Shipping address:</strong>
+  <%= @order.shipping_address %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
