@@ -1,4 +1,5 @@
 ActiveAdmin.register Order do
+  permit_params :first_name, :last_name, :fob_date, :fob_time, :paid, :shipping_type
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
