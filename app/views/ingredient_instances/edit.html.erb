@@ -1,6 +1,5 @@
-<h1>Editing ingredient_instance</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @ingredient_instance %> |
-<%= link_to 'Back', ingredient_instances_path %>
+<%- model_class = IngredientInstance -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => IngredientInstance %></h1>
+</div>
+<%= render :partial => 'form' %>

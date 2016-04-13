@@ -1,6 +1,5 @@
-<h1>Editing shipping_address</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @shipping_address %> |
-<%= link_to 'Back', shipping_addresses_path %>
+<%- model_class = ShippingAddress -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => ShippingAddress %></h1>
+</div>
+<%= render :partial => 'form' %>

@@ -1,0 +1,33 @@
+<div class="nested-fields">
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.input :first_name, input_html: { class: "first_name_location"}%>
+
+    </div>
+    <div class="col-sm-6">
+      <%= f.input :last_name, input_html: { class: "last_name_location"}%>
+    </div>
+    <div class="col-sm-12">
+      <%= f.input :shipping_type, collection: ([ "Pickup", "Uber","Fedex", "Courior"]), input_html: { class: "selectpicker"}, selected: "Pickup"%>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :fob_date, as: :string, input_html: { class: 'input-group date form-control', id: "datepicker","data-date-format": "yyyy-mm-dd" }%>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :fob_time, collection: ([ "Morning", "Afternoon"]), input_html: { class: "selectpicker"}, selected: "Morning"%>
+    </div>
+    <div class="col-md-4">
+    <label>Payment</label>
+      <%= f.input :paid, input_html: { "data-toggle":"toggle","data-on":"Paid", "data-off":"Unpaid"},label: false%>
+    </div>
+  </div>
+</div>
+
+<style>
+.checkbox {
+    margin-top: 0px;
+}
+</style>
+<script type="text/javascript">
+
+</script>

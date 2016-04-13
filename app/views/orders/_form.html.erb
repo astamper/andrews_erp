@@ -1,18 +1,109 @@
-<%= simple_form_for(@order) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @order do |f| %>
+  <% if @order.errors.any? %>
+    <div id="errors">
+      <p>
+        <%= @order.errors.count %>
+        Prevented this order froms saving
+      </p>
+      <ul>
+        <% @order.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Customer</h3>
+        </div>
+        <div class="panel-body">
+          <div id='customers'>
+            <%= f.simple_fields_for :customers do |customer| %>
+              <%= render 'customer_fields', :f => customer %>
+            <% end %>
+            <div class='links'>
+              <#%= link_to_add_association 'Add Customer', f, :customers, class: "btn btn-default add-button" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Order Details
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <div class="col-sm-6">
+              <%= f.input :first_name%>
+            </div>
+            <div class="col-sm-6">
+              <%= f.input :last_name%>
+            </div>
+            <div class="col-sm-4">
+              <%= f.input :fob_date, as: :string, input_html: { class: 'input-group date form-control', id: "datepicker","data-date-format": "yyyy-mm-dd" }%>
+            </div>
 
-  <div class="form-inputs">
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :fob_date %>
-    <%= f.input :fob_time %>
-    <%= f.input :paid %>
-    <%= f.input :shipping_type %>
-    <%= f.association :customer %>
-    <%= f.association :shipping_address %>
+            <div class="col-sm-4">
+              <%= f.input :fob_time, collection: ([ "Morning", "Afternoon"]), input_html: { class: "selectpicker","data-width":"auto"}, selected: "Morning"%>
+            </div>
+            <div class="col-md-4">
+              <%= f.input :paid, input_html: { "data-toggle":"toggle","data-on":"Paid", "data-off":"Unpaid"},label: false%>
+            </div>
+<!--             <div class="col-sm-4">
+              <#%= f.input :shipping_type, collection: [ "Pick Up", "Local", "FedEx"], input_html: { class: "selectpicker","data-width":"auto"}, selected: "Pick Up"%>
+            </div> -->
+            <!-- <div id="ship_address">
+              <div id="ship_address_from_list">
+              </div>
+              <div>
+                <#%= link_to_add_association 'Add Shipping Address', f, :shipping_address, class: "btn btn-default add-button", input_html: { class: 'selectpicker'} %>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Order Items</h3>
+    </div>
+    <div class="panel-body">
+      <div id='order_items'>
+        <%= f.simple_fields_for :order_items do |order_item| %>
+          <%= render 'order_item_fields', :f => order_item %>
+        <% end %>
+        <div class='links'>
+          <%= link_to_add_association 'Add order item', f, :order_items, class: "btn btn-default add-button" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
     <%= f.button :submit %>
+    <% end %>
   </div>
-<% end %>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.selectpicker').selectpicker({
+    size: 4
+    });
+  });
+  $(function () {
+    $("#datepicker").datepicker({
+          autoclose: true,
+          todayHighlight: true
+    }).datepicker('update', new Date());;
+  });
+</script>
+

@@ -55,8 +55,10 @@ end
 group :development do
   gem 'better_errors'
   gem 'pry-rails'
+  gem "rails-erd"
 end
 
+gem 'cocoon'
 gem 'binding_of_caller'
 gem 'devise', github: 'plataformatec/devise'
 gem 'omniauth'

@@ -1,34 +1,109 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @customer.first_name %>
-</p>
+<%- model_class = Customer -%>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @customer.last_name %>
-</p>
 
-<p>
-  <strong>Company:</strong>
-  <%= @customer.company %>
-</p>
 
-<p>
-  <strong>Customer type:</strong>
-  <%= @customer.customer_type %>
-</p>
+<div class="col-lg-4">
+  <h1>
+    <%=t '.title', :default => @customer.casual_id %>
+  </h1>
 
-<p>
-  <strong>Email:</strong>
-  <%= @customer.email %>
-</p>
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              customers_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              customer_path(@customer),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_customer_path(@customer), :class => 'btn btn-success' %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),new_customer_order_path,
+            :class => 'btn btn-primary' %>
+            </br><hr>
+</div>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @customer.phone %>
-</p>
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+  <div class="fieldset">
+    <dl>
+      <div class="col-lg-8">
+        <div class="col-lg-4 col-sm-6">
+          <dt class="label label-default">
+            <%= model_class.human_attribute_name(:first_name) %>
+          </dt>
+          <dd>
+            <pre class="prettyprint"><%= @customer.first_name %></pre>
+          </dd>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <dt class="label label-default">
+            <%= model_class.human_attribute_name(:last_name) %>
+          </dt>
+          <dd>
+            <pre class="prettyprint"><%= @customer.last_name %></pre>
+          </dd>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <dt class="label label-default">
+            <%= model_class.human_attribute_name(:company) %>
+          </dt>
+          <dd>
+            <pre class="prettyprint"><%= @customer.company %></pre>
+          </dd>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <dt class="label label-default">
+            <%= model_class.human_attribute_name(:customer_type) %>
+          </dt>
+          <dd>
+            <pre class="prettyprint"><%= @customer.customer_type %></pre>
+          </dd>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <dt class="label label-default">
+            <%= model_class.human_attribute_name(:email) %>
+          </dt>
+          <dd>
+          <pre class="prettyprint"><%= @customer.email %></pre>
+          </dd>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <dt class="label label-default">
+              <%= model_class.human_attribute_name(:phone) %>
+            </dt>
+          <dd>
+            <pre class="prettyprint"><%= @customer.phone %></pre>
+          </dd>
+        </div>
+      </div>
+    </dl>
+  </div>
+
+
+
+
+<%- model_class = Order -%>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th><%= model_class.human_attribute_name(:fob_date) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= link_to order.casual_id, order_path(order) %></td>
+        <td><%= order.fob_date %></td>
+        <td><%= order.status %></td>
+        <td>
+          <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

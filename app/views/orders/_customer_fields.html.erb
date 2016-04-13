@@ -1,0 +1,31 @@
+<div class="nested-fields">
+  <div class="row">
+    <div class="col-sm-12">
+      <#%= f.association :customer %>
+    </div>
+    <div class="col-sm-4">
+      <label for="disabledTextInput">First Name</label>
+      <input class="form-control" id="disabledInput" type="text" placeholder= <#%=@customer.first_name%> disabled>
+    </div>
+    <div class="col-sm-4">
+      <label for="disabledTextInput">Last Name</label>
+      <input class="form-control" id="disabledInput" type="text" placeholder= <#%=@customer.last_name%> disabled>
+    </div>
+    <div class="col-sm-4">
+      <label for="disabledTextInput">Company</label>
+      <input class="form-control" id="disabledInput" type="text" placeholder= <#%=@customer.company%> disabled>
+    </div>
+    <div class="col-sm-12">
+      <label for="disabledTextInput">Customer Type</label>
+      <input class="form-control" id="disabledInput" type="text" placeholder= <#%=@customer.company%> disabled>
+    </div>
+    <div class="col-sm-6">
+      <label for="disabledTextInput">Email</label>
+      <input class="form-control" id="disabledInput" type="text" placeholder= <#%=@customer.email%> disabled>
+    </div>
+    <div class="col-sm-6">
+      <label for="disabledTextInput">Phone</label>
+      <input class="form-control" id="disabledInput" type="text" placeholder= <#%=@customer.phone%> disabled>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-sm-6">
+    <%= f.input :first_name, input_html: { id: "first_name_source"} %>
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :last_name, input_html: { id: "last_name_source"} %>
+  </div>
+  <div class="col-sm-12">
+    <%= f.input :customer_type, collection: ([ "Individual", "Nonprofit","Small Wholesale", "Large Wholesale"]), input_html: { class: "selectpicker"}, selected: "Individual"%>
+  </div>
+    <div class="col-sm-6">
+    <%= f.input :email %>
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :phone %>
+  </div>
+</div>
+

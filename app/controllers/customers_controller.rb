@@ -10,11 +10,18 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+    @orders = Order.where({customer_id: @customer})
   end
 
   # GET /customers/new
   def new
     @customer = Customer.new
+  end
+
+  def new_customer_order
+    @customer = Customer.where({id: params[:id]})
+    @customer = @customer[0]
+    @order = Order.new
   end
 
   # GET /customers/1/edit
@@ -69,6 +76,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :company, :customer_type, :email, :phone)
+      params.require(:customer).permit(:first_name, :last_name, :company, :customer_type, :email, :phone, shipping_addresses_attributes: [:id, :first_name, :last_name, :address_1, :address_2, :city, :state, :country, :zip, :email, :phone, :customer_id, :order_id, :_destroy])
     end
 end

@@ -1,31 +1,34 @@
-<h1>Listing ingredient_instances</h1>
-
-<table>
+<%- model_class = IngredientInstance -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => IngredientInstance %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Quantity</th>
-      <th>Unit</th>
-      <th>Stock</th>
-      <th>Stock</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:quantity) %></th>
+      <th><%= model_class.human_attribute_name(:unit) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @ingredient_instances.each do |ingredient_instance| %>
       <tr>
+        <td><%= ingredient_instance.id %></td>
         <td><%= ingredient_instance.quantity %></td>
         <td><%= ingredient_instance.unit %></td>
-        <td><%= ingredient_instance.stock %></td>
-        <td><%= ingredient_instance.stock %></td>
-        <td><%= link_to 'Show', ingredient_instance %></td>
-        <td><%= link_to 'Edit', edit_ingredient_instance_path(ingredient_instance) %></td>
-        <td><%= link_to 'Destroy', ingredient_instance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l ingredient_instance.created_at, format: :long %></td>
+        <td>
+          <%= link_to 'Show', ingredient_instance %>
+          <%= link_to 'Edit', edit_ingredient_instance_path(ingredient_instance) %>
+          <%= link_to 'Destroy', ingredient_instance, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Ingredient instance', new_ingredient_instance_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_ingredient_instance_path,
+            :class => 'btn btn-primary' %>

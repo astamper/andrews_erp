@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Order Items</h3>
+      </div>
+      <div class="panel-body">
+        <div id='order_items'>
+          <%= f.simple_fields_for :order_items, OrderItem.new do |order_item| %>
+            <%= render 'forms/order_item/order_item_fields', :f => order_item %>
+          <% end %>
+          <div class='links'>
+            <%= link_to_add_association 'Add order item', f, :order_items, partial: 'forms/order_item/order_item_fields', class: "btn btn-default add-button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

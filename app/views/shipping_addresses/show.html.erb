@@ -1,59 +1,42 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = ShippingAddress -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => ShippingAddress %></h1>
+</div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @shipping_address.first_name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:first_name) %></dt>
+      <dd><pre class="prettyprint"><%= @shipping_address.first_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:last_name) %></dt>
+      <dd><pre class="prettyprint"><%= @shipping_address.last_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:address_1) %></dt>
+      <dd><pre class="prettyprint"><%= @shipping_address.address_1 %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:address_2) %></dt>
+      <dd><pre class="prettyprint"><%= @shipping_address.address_2 %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:city) %></dt>
+      <dd><pre class="prettyprint"><%= @shipping_address.city %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:state) %></dt>
+      <dd><pre class="prettyprint"><%= @shipping_address.state %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:country) %></dt>
+      <dd><pre class="prettyprint"><%= @shipping_address.country %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:zip) %></dt>
+      <dd><pre class="prettyprint"><%= @shipping_address.zip %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:email) %></dt>
+      <dd><pre class="prettyprint"><%= @shipping_address.email %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:phone) %></dt>
+      <dd><pre class="prettyprint"><%= @shipping_address.phone %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @shipping_address.last_name %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              shipping_addresses_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_shipping_address_path(@shipping_address), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              shipping_address_path(@shipping_address),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Address 1:</strong>
-  <%= @shipping_address.address_1 %>
-</p>
-
-<p>
-  <strong>Address 2:</strong>
-  <%= @shipping_address.address_2 %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @shipping_address.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @shipping_address.state %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @shipping_address.country %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @shipping_address.zip %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @shipping_address.email %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @shipping_address.phone %>
-</p>
-
-<p>
-  <strong>Customer:</strong>
-  <%= @shipping_address.customer %>
-</p>
-
-<%= link_to 'Edit', edit_shipping_address_path(@shipping_address) %> |
-<%= link_to 'Back', shipping_addresses_path %>

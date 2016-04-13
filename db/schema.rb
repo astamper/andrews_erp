@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408150714) do
+ActiveRecord::Schema.define(version: 20160413153348) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -59,31 +59,30 @@ ActiveRecord::Schema.define(version: 20160408150714) do
 
   create_table "ingredient_instances", force: true do |t|
     t.decimal  "quantity"
-    t.string   "unit"
     t.integer  "stock_id"
-    t.integer  "stock_component_id_id"
+    t.integer  "stock_component_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "ingredient_instances", ["stock_component_id_id"], name: "index_ingredient_instances_on_stock_component_id_id"
+  add_index "ingredient_instances", ["stock_component_id"], name: "index_ingredient_instances_on_stock_component_id"
   add_index "ingredient_instances", ["stock_id"], name: "index_ingredient_instances_on_stock_id"
 
   create_table "ingredients", force: true do |t|
     t.decimal  "quantity"
-    t.string   "unit"
     t.integer  "stock_type_id"
-    t.integer  "stock_type_component_id_id"
+    t.integer  "stock_type_component_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "ingredients", ["stock_type_component_id_id"], name: "index_ingredients_on_stock_type_component_id_id"
+  add_index "ingredients", ["stock_type_component_id"], name: "index_ingredients_on_stock_type_component_id"
   add_index "ingredients", ["stock_type_id"], name: "index_ingredients_on_stock_type_id"
 
   create_table "order_items", force: true do |t|
     t.integer  "quantity"
     t.string   "packaging"
+    t.string   "base_stock_type"
     t.integer  "order_id"
     t.integer  "stock_type_id"
     t.string   "unit"
@@ -132,9 +131,16 @@ ActiveRecord::Schema.define(version: 20160408150714) do
 
   create_table "stock_types", force: true do |t|
     t.string   "name"
+    t.string   "unit"
+    t.string   "packaging"
+    t.boolean  "sellable"
+    t.float    "price"
+    t.integer  "base_stock_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "stock_types", ["base_stock_type_id"], name: "index_stock_types_on_base_stock_type_id"
 
   create_table "stocks", force: true do |t|
     t.float    "initial_quantity"
@@ -157,6 +163,16 @@ ActiveRecord::Schema.define(version: 20160408150714) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "units", force: true do |t|
+    t.string   "name"
+    t.decimal  "quantity"
+    t.integer  "base_unit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "units", ["base_unit_id"], name: "index_units_on_base_unit_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

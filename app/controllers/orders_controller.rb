@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order_items = OrderItem.where({order_id: @order})
   end
 
   # GET /orders/new
@@ -69,6 +70,8 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:first_name, :last_name, :fob_date, :fob_time, :paid, :shipping_type, :customer_id, :shipping_address_id)
+      params.require(:order).permit(:first_name, :last_name, :fob_date, :fob_time, :paid, :shipping_type, :customer_id, :shipping_address_id, order_items_attributes: [:id, :quantity, :unit, :packaging, :order_id, :stock_type_id,:stock_id, :base_stock_type, :_destroy], customers_attributes: [:id, :first_name, :last_name, :company, :customer_type, :email, :phone,
+         :_destroy])
     end
 end
+

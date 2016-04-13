@@ -1,6 +1,7 @@
 class StockTypesController < ApplicationController
   before_action :set_stock_type, only: [:show, :edit, :update, :destroy]
 
+
   # GET /stock_types
   # GET /stock_types.json
   def index
@@ -25,7 +26,6 @@ class StockTypesController < ApplicationController
   # POST /stock_types.json
   def create
     @stock_type = StockType.new(stock_type_params)
-
     respond_to do |format|
       if @stock_type.save
         format.html { redirect_to @stock_type, notice: 'Stock type was successfully created.' }
@@ -35,6 +35,7 @@ class StockTypesController < ApplicationController
         format.json { render json: @stock_type.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /stock_types/1
@@ -69,6 +70,7 @@ class StockTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_type_params
-      params.require(:stock_type).permit(:name)
+      params.require(:stock_type).permit(:name, :unit, :packaging, :sellable, :base_stock_type_id, ingredients_attributes: [:id, :quantity, :unit, :stock_type_id, :stock_type_component_id, :_destroy])
     end
 end
+

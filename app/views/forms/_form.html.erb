@@ -1,0 +1,42 @@
+<%= simple_form_for(@customer) do |f| %>
+  <div class="row">
+  <%= f.error_notification %>
+  <%= render 'forms/customer/customer_section', :f => f %>
+  <%= f.simple_fields_for :orders, Order.new do |order| %>
+    <%= render 'forms/order/order_section', :f => order %>
+    </div>
+    <%= render 'forms/order_item/order_item_section', :f => order %>
+  <% end %>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.selectpicker').selectpicker({
+      size: 4
+    });
+    $("#datepicker").datepicker({
+      autoclose: true,
+      todayHighlight: true
+    }).datepicker('update', new Date());
+
+  });
+</script>
+
+
+<script>
+function first_nameVals() {
+  var first_nameValues = $( "#first_name_source" ).val();
+  var first_name_locationValues = $( "#first_name_location" ).val();
+  $( ".first_name_location" ).val( first_nameValues );
+}
+$( "#first_name_source" ).change( first_nameVals );
+function last_nameVals() {
+  var last_nameValues = $( "#last_name_source" ).val();
+  var last_name_locationValues = $( "#last_name_location" ).val();
+  $( ".last_name_location" ).val( last_nameValues );
+}
+$( "#last_name_source" ).change( last_nameVals );
+</script>

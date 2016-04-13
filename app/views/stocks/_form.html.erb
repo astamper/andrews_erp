@@ -1,18 +1,46 @@
-<%= simple_form_for(@stock) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :initial_quantity %>
-    <%= f.input :purchase_date %>
-    <%= f.input :expiration_date %>
-    <%= f.input :purchase_price %>
-    <%= f.input :batch_number %>
-    <%= f.association :supplier %>
-    <%= f.association :stock_type %>
-    <%= f.input :unit %>
+<%= form_for @stock, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :initial_quantity, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :initial_quantity, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :purchase_date, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :purchase_date, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :expiration_date, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :expiration_date, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :purchase_price, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :purchase_price, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :batch_number, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :batch_number, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :unit, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :unit, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  stocks_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

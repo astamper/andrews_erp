@@ -1,44 +1,109 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @order.first_name %>
-</p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @order.last_name %>
-</p>
+<%- model_class = Order -%>
 
-<p>
-  <strong>Fob date:</strong>
-  <%= @order.fob_date %>
-</p>
 
-<p>
-  <strong>Fob time:</strong>
-  <%= @order.fob_time %>
-</p>
 
-<p>
-  <strong>Paid:</strong>
-  <%= @order.paid %>
-</p>
+<div class="col-lg-4">
+  <h1>
+    <%=t '.title', :default => @order.casual_id %>
+  </h1>
 
-<p>
-  <strong>Shipping type:</strong>
-  <%= @order.shipping_type %>
-</p>
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              orders_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              order_path(@order),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_order_path(@order), :class => 'btn btn-success' %>
+            </br><hr>
+</div>
 
-<p>
-  <strong>Customer:</strong>
-  <%= @order.customer %>
-</p>
 
-<p>
-  <strong>Shipping address:</strong>
-  <%= @order.shipping_address %>
-</p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+
+
+
+
+
+  <div class="fieldset">
+    <dl>
+      <div class="col-lg-8">
+        <div class="col-lg-4 col-sm-6">
+          <dt class="label label-default">
+            <%= model_class.human_attribute_name(:first_name) %>
+          </dt>
+          <dd>
+            <pre class="prettyprint"><%= @order.first_name %></pre>
+          </dd>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <dt class="label label-default">
+            <%= model_class.human_attribute_name(:last_name) %>
+          </dt>
+          <dd>
+            <pre class="prettyprint"><%= @order.last_name %></pre>
+          </dd>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <dt class="label label-default">
+            <%= model_class.human_attribute_name(:fob_date) %>
+          </dt>
+          <dd>
+            <pre class="prettyprint"><%= @order.fob_date %></pre>
+          </dd>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <dt class="label label-default">
+            <%= model_class.human_attribute_name(:fob_time) %>
+          </dt>
+          <dd>
+            <pre class="prettyprint"><%= @order.fob_time %></pre>
+          </dd>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <dt class="label label-default">
+            <%= model_class.human_attribute_name(:paid) %>
+          </dt>
+          <dd>
+          <pre class="prettyprint"><%= @order.paid %></pre>
+          </dd>
+        </div>
+
+      </div>
+    </dl>
+  </div>
+
+
+
+
+<%- model_class = OrderItem -%>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th><%#= model_class.human_attribute_name(:fob_date) %></th>
+      <th><#%= model_class.human_attribute_name(:status) %></th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_items.each do |order_item| %>
+      <tr>
+        <td><#%= order_item.id %></td>
+        <td><#%= link_to order_item.casual_id, order_item_path(order_item) %></td>
+        <td><#%= order_item.fob_date %></td>
+        <td><#%= order_item.status %></td>
+        <td>
+          <#%= link_to 'Destroy', order_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+

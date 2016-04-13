@@ -1,6 +1,5 @@
-<h1>Editing stock</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @stock %> |
-<%= link_to 'Back', stocks_path %>
+<%- model_class = Stock -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Stock %></h1>
+</div>
+<%= render :partial => 'form' %>

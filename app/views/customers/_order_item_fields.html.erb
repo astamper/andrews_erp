@@ -1,0 +1,22 @@
+<div class="nested-fields">
+  <div class="row">
+    <div class="col-sm-2">
+      <%= f.input :quantity %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.input :unit %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.input :packaging %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.association :stock_type %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.association :stock %>
+    </div>
+    <div class="col-sm-2">
+      <%= link_to_remove_association 'Remove Order Item', f, class: "btn btn-default btn form-button dropbutton" %>
+    </div>
+  </div>
+</div>
