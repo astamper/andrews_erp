@@ -4,16 +4,16 @@
       <%= f.input :quantity %>
     </div>
     <div class="col-sm-2">
-      <%= f.input :unit, collection: ([ "Individual", "24 - Box","36 - Box", "Gourmet Box"]), input_html: { class: "unit"} %>
+      <%= f.input :unit, collection: ([ "Individual", "24 - Box","36 - Box", "Gourmet Box"]), input_html: { class: "unit selectpicker"} %>
     </div>
     <div class="col-sm-2">
-      <%= f.input :packaging, collection: ([ "Loose", "3-Pack","1-Pack","Twist Tie-Bagged","Bow-Bagged", "Gourmet-Pack"]) %>
+      <%= f.input :packaging, collection: ([ "Loose", "3-Pack","1-Pack","Twist Tie-Bagged","Bow-Bagged", "Gourmet-Pack"]), input_html: { class: "selectpicker"} %>
     </div>
     <div class="col-sm-2">
-      <%= f.association :stock_type%>
+      <%= f.association :stock_type, input_html: { class: "selectpicker"}%>
     </div>
     <div class="col-sm-2">
-      <%= f.association :stock %>
+      <%= f.association :stock, input_html: { class: "selectpicker"} %>
     </div>
     <div class="col-sm-2">
       <%= link_to_remove_association 'Remove Order Item', f, class: "btn btn-default btn form-button dropbutton" %>
