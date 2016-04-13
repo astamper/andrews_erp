@@ -1,4 +1,5 @@
 class IngredientInstancesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_ingredient_instance, only: [:show, :edit, :update, :destroy]
 
   # GET /ingredient_instances

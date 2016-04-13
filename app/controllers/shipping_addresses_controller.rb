@@ -1,4 +1,5 @@
 class ShippingAddressesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_shipping_address, only: [:show, :edit, :update, :destroy]
 
   # GET /shipping_addresses

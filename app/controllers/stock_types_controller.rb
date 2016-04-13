@@ -1,4 +1,5 @@
 class StockTypesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_stock_type, only: [:show, :edit, :update, :destroy]
 
 
