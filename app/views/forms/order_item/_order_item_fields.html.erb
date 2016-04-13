@@ -10,7 +10,7 @@
       <%= f.input :packaging, collection: ([ "Loose", "3-Pack","1-Pack","Twist Tie-Bagged","Bow-Bagged", "Gourmet-Pack"]) %>
     </div>
     <div class="col-sm-2">
-      <%= f.association :stock_type, collection: StockType.where('name <> "Caramel Apple"')%>
+      <%= f.association :stock_type%>
     </div>
     <div class="col-sm-2">
       <%= f.association :stock %>

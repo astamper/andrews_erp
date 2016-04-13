@@ -69,9 +69,11 @@ gem 'binding_of_caller'
 gem 'devise', github: 'plataformatec/devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 gem 'simple_form'
 gem 'validates_formatting_of'
 gem 'tzinfo-data'
 gem 'activeadmin', github: 'gregbell/active_admin'
+
 
 ruby "2.2.1"
