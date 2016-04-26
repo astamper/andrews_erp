@@ -8,9 +8,6 @@
       <dt class="label label-default"><%= model_class.human_attribute_name(:quantity) %></dt>
       <dd><pre class="prettyprint"><%= @order_item.quantity %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:packaging) %></dt>
-      <dd><pre class="prettyprint"><%= @order_item.packaging %></pre></dd>
-      <dt class="label label-default"><%= model_class.human_attribute_name(:unit) %></dt>
-      <dd><pre class="prettyprint"><%= @order_item.unit %></pre></dd>
   </dl>
 </div>
 
@@ -26,3 +23,4 @@
               :class => 'btn btn-danger' %>
 </div>
 
+<%= @order_item.stock_type.name %>

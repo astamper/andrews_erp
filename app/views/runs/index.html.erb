@@ -1,0 +1,27 @@
+<%- model_class = OrderItem -%>
+<div class="page-header">
+  <h1>Production Run</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_items.each do |key, value| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= value["quantity"] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_order_item_path,
+            :class => 'btn btn-primary' %>
+
+<%= @order_items.inspect %>

@@ -7,8 +7,6 @@
     <tr>
       <th>ID</th>
       <th><%= model_class.human_attribute_name(:quantity) %></th>
-      <th><%= model_class.human_attribute_name(:packaging) %></th>
-      <th><%= model_class.human_attribute_name(:unit) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -17,9 +15,6 @@
     <% @order_items.each do |order_item| %>
       <tr>
         <td><%= order_item.id %></td>
-        <td><%= order_item.quantity %></td>
-        <td><%= order_item.packaging %></td>
-        <td><%= order_item.unit %></td>
         <td><%=l order_item.created_at, format: :long %></td>
         <td>
           <%= link_to 'Show', order_item %>
@@ -34,3 +29,4 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_order_item_path,
             :class => 'btn btn-primary' %>
+

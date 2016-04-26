@@ -1,0 +1,35 @@
+<div class="form-group select optional ">
+  <label>
+    Existing Customer
+  </label>
+  <select class="form-control customer_page">
+    <option value="<%= @customer.id %>", class ="options category_form"><%= @customer.casual_id %></option>
+    <option value="empty"></option>
+    <% @customer_list.each do |customer|%>
+        <option value="<%= customer.id %>", class ="options category_form"><%= customer.casual_id %></option>
+    <% end %>
+  </select>
+</div>
+<div class="row">
+  <%= f.association :customer, as: :hidden, input_html: { value:  @customer.id}%>
+  <div class="col-sm-6">
+    <label for="disabledTextInput">First Name</label>
+    <input class="form-control" id="disabledInput" type="text" placeholder= <%=@customer.first_name%> disabled>
+  </div>
+  <div class="col-sm-6">
+    <label for="disabledTextInput">Last Name</label>
+    <input class="form-control" id="disabledInput" type="text" placeholder= <%=@customer.last_name%> disabled>
+  </div>
+  <div class="col-sm-12">
+    <label for="disabledTextInput">Customer Type</label>
+    <input class="form-control" id="disabledInput" type="text" placeholder= <%=@customer.company%> disabled>
+  </div>
+  <div class="col-sm-6">
+    <label for="disabledTextInput">Email</label>
+    <input class="form-control" id="disabledInput" type="text" placeholder= <%=@customer.email%> disabled>
+  </div>
+  <div class="col-sm-6">
+    <label for="disabledTextInput">Phone</label>
+    <input class="form-control" id="disabledInput" type="text" placeholder= <%=@customer.phone%> disabled>
+  </div>
+</div>

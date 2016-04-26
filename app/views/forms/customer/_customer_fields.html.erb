@@ -1,3 +1,14 @@
+<div class="form-group select optional ">
+  <label>
+    Existing Customer
+  </label>
+  <select class="form-control customer_page">
+    <option value="empty"></option>
+    <% @customer_list.each do |customer|%>
+      <option value="<%= customer.id %>", class ="options category_form"><%= customer.casual_id %></option>
+    <% end %>
+  </select>
+</div>
 <div class="row">
   <div class="col-sm-6">
     <%= f.input :first_name, input_html: { id: "first_name_source"} %>
@@ -6,7 +17,7 @@
     <%= f.input :last_name, input_html: { id: "last_name_source"} %>
   </div>
   <div class="col-sm-12">
-    <%= f.input :customer_type, collection: ([ "Individual", "Nonprofit","Small Wholesale", "Large Wholesale"]), input_html: { class: "selectpicker"}, selected: "Individual"%>
+    <%= f.input :customer_type, collection: ([ "Individual", "Nonprofit","Small Wholesale", "Large Wholesale"]), selected: "Individual"%>
   </div>
     <div class="col-sm-6">
     <%= f.input :email %>

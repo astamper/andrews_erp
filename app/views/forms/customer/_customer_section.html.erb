@@ -5,7 +5,12 @@
     </div>
     <div class="panel-body">
       <div class="form-inputs">
-        <%= render 'forms/customer/customer_fields', :f => f %>
+        <% url = request.path_info %>
+        <% if url.include?('new_customer_order_form') %>
+          <%= render 'forms/customer/customer_fields', :f => f %>
+        <% else %>
+          <%= render 'forms/customer/existing_customer_fields', :f => f %>
+        <% end %>
       </div>
     </div>
   </div>

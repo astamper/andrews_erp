@@ -8,7 +8,6 @@ class CreateStocks < ActiveRecord::Migration
       t.string :batch_number
       t.references :supplier, index: true
       t.references :stock_type, index: true
-      t.string :unit
 
       t.timestamps
     end

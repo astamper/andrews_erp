@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :packagings
+
   resources :units
 
   get 'landings/index'
@@ -21,12 +23,14 @@ Rails.application.routes.draw do
 
   resources :ingredient_instances
 
-  get '/forms/new_customer_order_form', :controller => 'forms', :action => 'new_customer_order_form', :as => 'new_customer_order_form'
+  get '/new_customer_order_form', :controller => 'forms', :action => 'new_customer_order_form', :as => 'new_customer_order_form'
 
-  get '/runs/new_run', :controller => 'runs', :action => 'new_run', :as => 'new_run'
+  get '/new_run', :controller => 'runs', :action => 'new_run', :as => 'new_run'
 
+  get '/runs', :controller => 'runs', :action => 'index', :as => 'runs'
 
-  get '/customers/:id/new_order',      :controller => 'customers', :action => 'new_customer_order',    :as => 'new_customer_order'
+  get '/customers/:id/new_order',      :controller => 'forms', :action => 'existing_customer_order_form',    :as => 'existing_customer_order_form'
+
 
 
 

@@ -7,16 +7,17 @@
       </div>
       <div class="panel-body">
         <div class="form-inputs">
+          <%= f.input :base%>
           <div class="col-sm-6">
             <%= f.input :name, input_html: { id: "name_location"}%>
           </div>
           <div class="col-sm-6">
-            <%= f.association :base_stock_type, input_html: { id: "base_stock_type", class: "selectpicker base_stock_type", "data-live-search":"true"} %>
+            <%= f.association :base_stock_type, collection: StockType.where(base: true), label_method: :label %>
           </div>
           <div class="col-sm-12">
-            <%= f.input :unit, input_html: { id: "unit"}, collection: ([ "Individual", "24 - Box","36 - Box", "Gourmet Box"]), input_html: { class: "selectpicker", "data-live-search":"true"}%>
-            <%= f.input :packaging, input_html: { id: "packaging"}, collection: ([ "Loose", "3-Pack","1-Pack","Twist Tie-Bagged","Bow-Bagged", "Gourmet-Pack"]), input_html: { class: "selectpicker", "data-live-search":"true"}%>
-            <%= f.input :sellable%>
+            <%= f.input :unit%>
+            <%= f.input :category, collection: ([ "Raw Ingredient", "Sub-Assembly", "Packaging","Product"])%>
+            <%= f.input :price%>
           </div>
         </div>
       </div>
@@ -47,20 +48,5 @@
 <% end %>
 
 
-<script type="text/javascript">
-
-  $( "#base_stock_type" ).change( nameVals );
-  function nameVals() {
-    var base_stock_typeValues = $( "#base_stock_type" ).val()
-    if(!base_stock_typeValues.trim()) {
-      $("#name_location").prop('disabled', false);
-    }
-    else {
-      $("#name_location").prop('disabled', true);
-    }
-    $( "#name_location" ).val("");
-  }
-
-</script>
 
 

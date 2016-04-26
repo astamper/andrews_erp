@@ -71,7 +71,7 @@ class StockTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stock_type_params
-      params.require(:stock_type).permit(:name, :unit, :packaging, :sellable, :base_stock_type_id, ingredients_attributes: [:id, :quantity, :unit, :stock_type_id, :stock_type_component_id, :_destroy])
+      params.require(:stock_type).permit(:name, :unit, :category, :base, :price, :base_stock_type_id, ingredients_attributes: [:id, :quantity, :stock_type_id, :stock_type_component_id, :_destroy])
     end
 end
 

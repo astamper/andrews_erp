@@ -3,9 +3,9 @@ class CreateStockTypes < ActiveRecord::Migration
     create_table :stock_types do |t|
       t.string :name
       t.string :unit
-      t.string :packaging
-      t.boolean :sellable
+      t.string :category
       t.float :price
+      t.boolean :base
 
       t.references :base_stock_type, references: :stock_type, index: true
       t.timestamps

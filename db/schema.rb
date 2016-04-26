@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413153348) do
+ActiveRecord::Schema.define(version: 20160408150714) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -81,11 +81,9 @@ ActiveRecord::Schema.define(version: 20160413153348) do
 
   create_table "order_items", force: true do |t|
     t.integer  "quantity"
-    t.string   "packaging"
     t.string   "base_stock_type"
     t.integer  "order_id"
     t.integer  "stock_type_id"
-    t.string   "unit"
     t.integer  "stock_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -132,9 +130,9 @@ ActiveRecord::Schema.define(version: 20160413153348) do
   create_table "stock_types", force: true do |t|
     t.string   "name"
     t.string   "unit"
-    t.string   "packaging"
-    t.boolean  "sellable"
+    t.string   "category"
     t.float    "price"
+    t.boolean  "base"
     t.integer  "base_stock_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -150,7 +148,6 @@ ActiveRecord::Schema.define(version: 20160413153348) do
     t.string   "batch_number"
     t.integer  "supplier_id"
     t.integer  "stock_type_id"
-    t.string   "unit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -163,16 +160,6 @@ ActiveRecord::Schema.define(version: 20160413153348) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "units", force: true do |t|
-    t.string   "name"
-    t.decimal  "quantity"
-    t.integer  "base_unit_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "units", ["base_unit_id"], name: "index_units_on_base_unit_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

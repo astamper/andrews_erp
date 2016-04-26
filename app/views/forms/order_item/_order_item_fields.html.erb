@@ -4,19 +4,67 @@
       <%= f.input :quantity %>
     </div>
     <div class="col-sm-2">
-      <%= f.input :unit, collection: ([ "Individual", "24 - Box","36 - Box", "Gourmet Box"]), input_html: { class: "unit selectpicker"} %>
+      <div class="form-group select optional ">
+        <label>
+          Category
+        </label>
+        <select class="form-control category questions">
+          <option value="empty"></option>
+          <% @categories.each do |category|%>
+            <option value="<%= category.parameterize('_') %>", class ="options category_form"><%= category %></option>
+          <% end %>
+        </select>
+      </div>
     </div>
     <div class="col-sm-2">
-      <%= f.input :packaging, collection: ([ "Loose", "3-Pack","1-Pack","Twist Tie-Bagged","Bow-Bagged", "Gourmet-Pack"]), input_html: { class: "selectpicker"} %>
+      <div class="form-group select optional">
+        <label>
+          Stock Type
+        </label>
+        <select class="form-control stock_type questions ", disabled="true">
+          <option value="empty"></option>
+          <% @stock_types.each do |stock_type|%>
+            <option value="<%= stock_type[0].parameterize('_') %>",
+              class = "options stock_type_form <% stock_type[1].each do |category|%><%= category.parameterize('_') %>_class <% end %>">
+              <%= stock_type[0]%>
+            </option>
+          <% end %>
+        </select>
+      </div>
     </div>
     <div class="col-sm-2">
-      <%= f.association :stock_type, input_html: { class: "selectpicker"}%>
+      <div class="form-group select optional">
+        <label>
+          Unit
+        </label>
+        <select class="form-control unit questions", disabled="true">
+          <option value="empty"></option>
+          <% @units.each do |unit|%>
+            <option value="<%= unit[0].parameterize('_') %>",
+              class = "options unit_form <% unit[1].each do |stock_type|%><%= stock_type.parameterize('_') %>_class <% end %>">
+              <%= unit[0]%>
+            </option>
+          <% end %>
+        </select>
+      </div>
     </div>
     <div class="col-sm-2">
-      <%= f.association :stock, input_html: { class: "selectpicker"} %>
+      <%= f.input :stock_type, label: 'Packaging' do %>
+      <%= f.select :stock_type, StockType.all.map { |r| [r.packaging, r.id, { :class => "options #{r.unit.parameterize('_')}_class #{r.identification.parameterize('_')}_class #{r.category.parameterize('_')}_class"}]}, {include_blank: true},{class: "packaging questions form-control", disabled: "true"} %>
+      <% end %>
     </div>
     <div class="col-sm-2">
       <%= link_to_remove_association 'Remove Order Item', f, class: "btn btn-default btn form-button dropbutton" %>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+
+
+  $( "select" ).change( valueUpdate );
+
+
+</script>
+
