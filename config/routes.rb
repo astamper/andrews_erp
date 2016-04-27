@@ -25,12 +25,11 @@ Rails.application.routes.draw do
 
   get '/new_customer_order_form', :controller => 'forms', :action => 'new_customer_order_form', :as => 'new_customer_order_form'
 
-  get '/new_run', :controller => 'runs', :action => 'new_run', :as => 'new_run'
-
-  get '/runs', :controller => 'runs', :action => 'index', :as => 'runs'
-
   get '/customers/:id/new_order',      :controller => 'forms', :action => 'existing_customer_order_form',    :as => 'existing_customer_order_form'
 
+  get '/todays_production', :controller => 'productions', :action => 'todays_production_index',    :as => 'todays_production_index'
+
+  get '/todays_production/:base_stock_type', :controller => 'productions', :action => 'todays_production',    :as => 'todays_production'
 
 
 

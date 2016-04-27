@@ -17,9 +17,8 @@
               :class => 'btn btn-danger' %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_customer_path(@customer), :class => 'btn btn-success' %>
-  <%= link_to t('.new', :default => t("helpers.links.new")),new_customer_order_path,
-            :class => 'btn btn-primary' %>
-            </br><hr>
+  <%= link_to "New Order",existing_customer_order_form_path(@customer),:class => 'btn btn-primary' %>
+  </br><hr>
 </div>
 
 

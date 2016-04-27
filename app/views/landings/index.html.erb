@@ -1,4 +1,9 @@
 <%= link_to "New Order",new_customer_order_form_path,:class => 'btn btn-success btn-lg btn-block' %>
-<%= link_to "New Order",new_customer_order_form_path,:class => 'btn btn-success btn-lg btn-block' %>
-<%= link_to "New Stock",new_stock_path,:class => 'btn btn-primary btn-lg btn-block' %>
+<%= link_to "Orders",orders_path,:class => 'btn btn-success btn-lg btn-block' %>
 
+<%= link_to "New Inventory",new_stock_path,:class => 'btn btn-primary btn-lg btn-block' %>
+<%= link_to "Inventory",stocks_path,:class => 'btn btn-primary btn-lg btn-block' %>
+
+<%= link_to "Todays Production",todays_production_index_path,:class => 'btn btn-danger btn-lg btn-block' %>
+
+<%= link_to "Customers",customers_path,:class => 'btn btn-warning btn-lg btn-block' %>

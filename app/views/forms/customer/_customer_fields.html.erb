@@ -2,7 +2,7 @@
   <label>
     Existing Customer
   </label>
-  <select class="form-control customer_page">
+  <select class="form-control customer_page " >
     <option value="empty"></option>
     <% @customer_list.each do |customer|%>
       <option value="<%= customer.id %>", class ="options category_form"><%= customer.casual_id %></option>

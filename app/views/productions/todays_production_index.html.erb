@@ -1,0 +1,43 @@
+<%- model_class = OrderItem -%>
+<div class="page-header">
+  <h1>Today's Production</h1>
+</div>
+<% @summary.each do |product| %>
+
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= product[0] %></h3>
+    </div>
+    <div class="panel-body">
+      <% product[1].each do |packaging| %>
+        <div class="col-md-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title" style="text-align:center"><%= packaging[0] %></h3>
+            </div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Unit</th>
+                  <th>Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% packaging[1].each do |unit| %>
+                  <tr>
+                    <td><%= unit[0] %></td>
+                    <td><%= unit[1] %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
